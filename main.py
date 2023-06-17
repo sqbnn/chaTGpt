@@ -20,8 +20,10 @@ async def cmd_start(message: types.Message):
     await message.answer(f'{message.from_user.id}')
     await message.answer(f'{message.from_user.first_name}, ',
                          reply_markup=main)
-    if message.from_user.id == int(os.getenv('ADMIN_ID')):
-        await message.answer(f'Вы авторизовались как администратор')
+
+@dp.message_handler(commands=['qwe'])
+async def cmd_start(message: types.Message):
+    await message.answer('Привет')
 
 if __name__ == '__main__':
     executor.start_polling(dp)
